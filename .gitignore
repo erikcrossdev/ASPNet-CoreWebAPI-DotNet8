@@ -1,0 +1,59 @@
+## Compiled files
+bin/
+obj/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+*.dll
+*.exe
+*.app
+*.log
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## DotNet artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## VS Code
+.vscode/
+
+## Visual Studio
+.vs/
+
+## Rider
+.idea/
+
+## NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.psmdcp
+
+## Others
+*.dbmdl
+*.bak
+*.sql
+*.sqlite
+
+# dotenv files (configuração de secrets)
+*.env
+.env.*
+
+# Local secrets
+secrets.json
+
+# Logs
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
