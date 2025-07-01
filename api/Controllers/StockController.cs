@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -19,7 +20,7 @@ namespace api.Controllers
         [HttpGet] //get = read
         public IActionResult GetAll()
         {
-            var stocks = _context.Stocks.ToList(); //needs .ToList to convert to a list
+            var stocks = _context.Stocks.ToList().Select( s => s.ToStockDTO()); //use the mapper to convert the stock model to stock DTO
             return Ok(stocks); //returns 200 OK with the list of stocks           
         }
 
@@ -31,7 +32,7 @@ namespace api.Controllers
             {
                 return NotFound(); //returns 404 Not Found if stock is not found
             }
-            return Ok(stock); //returns 200 OK with the stock
+            return Ok(stock.ToStockDTO()); //returns 200 OK with the stock
         }
     }
 }
