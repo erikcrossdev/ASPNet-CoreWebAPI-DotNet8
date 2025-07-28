@@ -65,8 +65,24 @@ namespace api.Controllers
             stockModel.MarketCap = updateStockDTO.MarketCap;
 
             _context.SaveChanges(); //update the stock model in the context
-            
+
             return Ok(stockModel.ToStockDTO()); //returns 200 OK with the updated stock DTO
+        }
+
+        [HttpDelete] //delete by id
+        [Route("{id}")]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            var stockModel = _context.Stocks.FirstOrDefault(s => s.Id == id); //find the stock by id
+
+            if (stockModel == null)
+            {
+                return NotFound(); //returns 404 Not Found if stock is not found
+            }
+            _context.Stocks.Remove(stockModel); //remove the stock model from the context
+            _context.SaveChanges(); //save changes to the database
+
+            return NoContent(); //returns 204 No Content to indicate successful deletion
         }
     }
 }
